@@ -2,7 +2,7 @@
 
 **Plateforme gratuite d'outils PDF et numériques — 100 % dans votre navigateur.**
 
-Outipro réunit seize outils pour manipuler vos documents PDF, vos images et vos fichiers Word, sans inscription, sans limite d'usage et sans jamais envoyer un seul octet sur un serveur. Chaque traitement s'exécute localement, dans l'onglet de votre navigateur, grâce aux bibliothèques JavaScript embarquées dans le projet.
+Outipro réunit dix-huit outils pour manipuler vos documents PDF, vos images et vos fichiers Word, sans inscription, sans limite d'usage et sans jamais envoyer un seul octet sur un serveur. Chaque traitement s'exécute localement, dans l'onglet de votre navigateur, grâce aux bibliothèques JavaScript embarquées dans le projet.
 
 ---
 
@@ -14,7 +14,7 @@ Outipro prend le problème à l'envers. L'application est un site statique : que
 
 ## Les outils
 
-Seize outils sont répartis en cinq catégories. Tous acceptent le glisser-déposer et affichent un aperçu du résultat avant le téléchargement.
+Dix-huit outils sont répartis en cinq catégories. Tous acceptent le glisser-déposer et affichent un aperçu du résultat avant le téléchargement.
 
 ### Organiser
 
@@ -25,6 +25,7 @@ Seize outils sont répartis en cinq catégories. Tous acceptent le glisser-dépo
 | **Extraire des pages** | Conserve uniquement les pages sélectionnées, en cliquant sur les vignettes ou en saisissant « 1-3, 7, 10- ». |
 | **Supprimer des pages** | Retire les pages indiquées et laisse le reste du document strictement identique. |
 | **Pivoter un PDF** | Redresse un scan à l'envers, page par page ou sur l'ensemble du document, par pas de 90°. |
+| **Organiser les pages** | Affiche toutes les pages en vignettes et permet de les réordonner par glisser-déposer, de les pivoter, de les dupliquer ou de les supprimer avant d'enregistrer le PDF. |
 
 ### Éditer
 
@@ -40,6 +41,7 @@ Seize outils sont répartis en cinq catégories. Tous acceptent le glisser-dépo
 | --- | --- |
 | **PDF en JPG** | Rend chaque page en image JPG, avec qualité et résolution réglables. Un PDF multipage produit une archive ZIP. |
 | **PDF en texte** | Extrait le contenu textuel, reconstruit les lignes et les paragraphes, et propose des séparateurs de page optionnels. |
+| **PDF en Word** | Extrait le texte du PDF et génère un fichier `.docx` modifiable, avec paragraphes reconstitués, titres mis en valeur et une page Word par page PDF. |
 | **Word en PDF** | Convertit un fichier `.docx` en PDF en conservant titres, paragraphes et listes à puces. |
 | **Images en PDF** | Assemble des photos ou captures d'écran dans un PDF, avec format de page (A4, Letter ou ajusté), orientation et marges. |
 
