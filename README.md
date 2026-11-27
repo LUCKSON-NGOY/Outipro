@@ -2,7 +2,7 @@
 
 **Plateforme gratuite d'outils PDF et numériques — 100 % dans votre navigateur.**
 
-Outipro réunit seize outils pour manipuler vos documents PDF, vos images et vos fichiers Word, sans inscription, sans limite d'usage et sans jamais envoyer un seul octet sur un serveur. Chaque traitement s'exécute localement, dans l'onglet de votre navigateur, grâce aux bibliothèques JavaScript embarquées dans le projet.
+Outipro réunit dix-huit outils pour manipuler vos documents PDF, vos images et vos fichiers Word, sans inscription, sans limite d'usage et sans jamais envoyer un seul octet sur un serveur. Chaque traitement s'exécute localement, dans l'onglet de votre navigateur, grâce aux bibliothèques JavaScript embarquées dans le projet.
 
 ---
 
@@ -14,7 +14,7 @@ Outipro prend le problème à l'envers. L'application est un site statique : que
 
 ## Les outils
 
-Seize outils sont répartis en cinq catégories. Tous acceptent le glisser-déposer et affichent un aperçu du résultat avant le téléchargement.
+Dix-huit outils sont répartis en cinq catégories. Tous acceptent le glisser-déposer et affichent un aperçu du résultat avant le téléchargement.
 
 ### Organiser
 
@@ -25,6 +25,7 @@ Seize outils sont répartis en cinq catégories. Tous acceptent le glisser-dépo
 | **Extraire des pages** | Conserve uniquement les pages sélectionnées, en cliquant sur les vignettes ou en saisissant « 1-3, 7, 10- ». |
 | **Supprimer des pages** | Retire les pages indiquées et laisse le reste du document strictement identique. |
 | **Pivoter un PDF** | Redresse un scan à l'envers, page par page ou sur l'ensemble du document, par pas de 90°. |
+| **Organiser les pages** | Affiche toutes les pages en vignettes et permet de les réordonner par glisser-déposer, de les pivoter, de les dupliquer ou de les supprimer avant d'enregistrer le PDF. |
 
 ### Éditer
 
@@ -40,6 +41,7 @@ Seize outils sont répartis en cinq catégories. Tous acceptent le glisser-dépo
 | --- | --- |
 | **PDF en JPG** | Rend chaque page en image JPG, avec qualité et résolution réglables. Un PDF multipage produit une archive ZIP. |
 | **PDF en texte** | Extrait le contenu textuel, reconstruit les lignes et les paragraphes, et propose des séparateurs de page optionnels. |
+| **PDF en Word** | Extrait le texte du PDF et génère un fichier `.docx` modifiable, avec paragraphes reconstitués, titres mis en valeur et une page Word par page PDF. |
 | **Word en PDF** | Convertit un fichier `.docx` en PDF en conservant titres, paragraphes et listes à puces. |
 | **Images en PDF** | Assemble des photos ou captures d'écran dans un PDF, avec format de page (A4, Letter ou ajusté), orientation et marges. |
 
@@ -118,11 +120,29 @@ O.tools.push({
 });
 ```
 
-Ajouter un outil ne demande donc ni route, ni entrée de menu : le routeur `#/outil/{slug}` et les cartes de la page d'accueil sont générés à partir du registre.
+Ajouter un outil demande ensuite d'ajouter son entrée éditoriale dans `seo/content.py` puis de relancer le générateur : la page statique, la carte d'accueil, le maillage interne et l'entrée de sitemap sont produits automatiquement.
 
 ### Routage et thème
 
-La navigation repose sur un routeur par hash (`#/`, `#/outils`, `#/outil/{slug}`, `#/faq`, `#/a-propos`, `#/confidentialite`), sans dépendance externe. Le thème clair ou sombre se choisit dans l'en-tête, s'applique via l'attribut `html[data-theme]` et se mémorise dans `localStorage` sous la clé `outipro-theme`. Le design system s'appuie sur des variables CSS, ce qui rend la bascule instantanée et sans rechargement.
+La navigation repose sur de vraies URL, une par page : `index.html`, `outils.html`, `fusionner-pdf.html`, `faq.html`, `a-propos.html`, `contact.html`, `confidentialite.html`, `conditions-utilisation.html`. Chaque fichier est autonome, avec son propre `<title>`, sa description, sa canonique et ses données structurées, ce qui le rend indexable individuellement. Une fois la page chargée, les liens internes sont interceptés et rendus côté client via `history.pushState` : la navigation reste instantanée, sans rechargement, tout en conservant des URL propres. Les anciennes adresses par hash (`#/outil/compresser-pdf`) sont redirigées vers leur fichier correspondant par `history.replaceState`, donc aucun lien existant ne casse.
+
+Le thème clair ou sombre se choisit dans l'en-tête, s'applique via l'attribut `html[data-theme]` et se mémorise dans `localStorage` sous la clé `outipro-theme`. Le design system s'appuie sur des variables CSS, ce qui rend la bascule instantanée et sans rechargement.
+
+## Référencement (SEO)
+
+Le site est généré, pas écrit à la main. Le dossier `seo/` contient deux fichiers :
+
+- `seo/content.py` — la source éditoriale : pour chacun des 18 outils, un titre SEO, une méta-description, un H1, une introduction, la section « Quand l'utiliser » (3 points), « Comment ça marche » (3 étapes), une FAQ de 3 questions et 3 outils complémentaires. Les six pages institutionnelles suivent le même schéma.
+- `seo/build.py` — le générateur. Il produit les 26 pages HTML, `sitemap.xml`, `robots.txt` et `assets/js/seo-data.js` (la table des titres et descriptions consommée par le routeur).
+
+```bash
+python3 seo/build.py            # régénère toutes les pages
+SITE_URL=https://exemple.fr python3 seo/build.py   # canoniques sur un autre domaine
+```
+
+Chaque page embarque : une canonique absolue, `robots` avec `max-image-preview:large` et `max-snippet:-1`, les balises Open Graph et Twitter Card avec une image de partage 1200 × 630, et un bloc JSON-LD `@graph` combinant `Organization`, `WebSite`, `BreadcrumbList`, `WebPage` et, selon le type de page, `SoftwareApplication` + `HowTo` + `FAQPage` (outils), `ItemList` (catalogue) ou `FAQPage` (FAQ). Le contenu éditorial est rendu côté serveur dans le HTML, sous l'outil : il est donc lisible par les robots sans exécuter JavaScript. Le maillage interne relie chaque outil à trois outils complémentaires et à sa catégorie, ce qui évite les pages orphelines.
+
+`seo_audit.py` vérifie l'ensemble : longueur des titres (25–65 caractères) et des descriptions (70–170), absence de doublons, une seule balise H1 par page, validité du JSON-LD, présence de la canonique et de l'image Open Graph. Le rapport attendu est de 26 pages et zéro anomalie.
 
 ## Lancer le projet en local
 
@@ -151,6 +171,10 @@ Outipro fonctionne sur les versions récentes de Chrome, Edge, Firefox et Safari
 ## Limites connues
 
 La compression de PDF fonctionne par rasterisation : les pages sont rendues en images, ce qui allège fortement les documents scannés ou riches en images, mais dégrade légèrement la netteté du texte et supprime la sélection de texte. C'est un compromis classique, assumé et expliqué dans l'interface. La conversion Word en PDF ne reprend pas les images du document d'origine et se concentre sur la structure textuelle. L'extraction de texte ne fait pas d'OCR : un PDF issu d'un scanner sans couche texte ne produira rien d'exploitable, et l'outil le signale explicitement plutôt que de rendre un fichier vide.
+
+## Contact
+
+Pour une question, un signalement de bug ou une suggestion d'outil : **sonoreluc30@gmail.com**. Merci de ne pas joindre vos documents — aucun fichier n'est nécessaire pour diagnostiquer un problème, et rien ne justifie de faire sortir un document sensible de votre appareil.
 
 ## Licence
 

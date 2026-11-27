@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /assets/vendor/
+
+Sitemap: https://sites.super.myninja.ai/0f366c0b-6f15-4a1d-89e1-214e7a0968fe/e1b27b6b/sitemap.xml
