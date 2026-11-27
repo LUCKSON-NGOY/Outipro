@@ -1,0 +1,28 @@
+# Systèmes d'exploitation
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Journaux et temporaires
+*.log
+npm-debug.log*
+.cache/
+tmp/
+temp/
+
+# Dépendances (le projet n'en a aucune : tout est vendorisé)
+node_modules/
+
+# Fichiers de test locaux
+testfiles/
+*.spec.local.js
+
+# Artefacts de build éventuels
+dist/
+build/
