@@ -21,21 +21,21 @@
     const header = document.getElementById('site-header');
     header.innerHTML = `
       <div class="header-inner">
-        <a class="brand" href="#/" aria-label="Outipro, accueil">
+        <a class="brand" href="index.html" aria-label="Outipro, accueil">
           <span class="brand-mark">${I.logo}</span>
           <span>Outi<b>pro</b></span>
         </a>
         <nav class="nav" id="main-nav">
-          <a href="#/" data-nav="home">Accueil</a>
-          <a href="#/outils" data-nav="tools">Tous les outils</a>
-          <a href="#/faq" data-nav="faq">FAQ</a>
-          <a href="#/a-propos" data-nav="about">À propos</a>
-          <a href="#/contact" data-nav="contact">Contact</a>
+          <a href="index.html" data-nav="home">Accueil</a>
+          <a href="outils.html" data-nav="tools">Tous les outils</a>
+          <a href="faq.html" data-nav="faq">FAQ</a>
+          <a href="a-propos.html" data-nav="about">À propos</a>
+          <a href="contact.html" data-nav="contact">Contact</a>
         </nav>
         <div class="header-actions">
           <button class="icon-btn" id="theme-btn" title="Changer de thème" aria-label="Changer de thème">${I.moon}</button>
           <button class="icon-btn menu-toggle" id="menu-btn" aria-label="Menu">${I.menu}</button>
-          <a class="btn btn-primary btn-sm" href="#/outils" style="margin-left:4px">Tous les outils</a>
+          <a class="btn btn-primary btn-sm" href="outils.html" style="margin-left:4px">Tous les outils</a>
         </div>
       </div>`;
     applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
@@ -48,12 +48,12 @@
     nav.addEventListener('click', (e) => { if (e.target.tagName === 'A') nav.classList.remove('open'); });
 
     const footer = document.getElementById('site-footer');
-    const popular = O.tools.slice(0, 5).map((t) => `<a href="#/outil/${t.slug}">${t.name}</a>`).join('');
+    const popular = O.tools.slice(0, 5).map((t) => `<a href="${t.slug}.html">${t.name}</a>`).join('');
     footer.innerHTML = `
       <div class="container">
         <div class="footer-grid">
           <div>
-            <a class="brand" href="#/" style="margin-bottom:12px"><span class="brand-mark">${I.logo}</span><span>Outi<b>pro</b></span></a>
+            <a class="brand" href="index.html" style="margin-bottom:12px"><span class="brand-mark">${I.logo}</span><span>Outi<b>pro</b></span></a>
             <p>Outipro réunit vos outils PDF et numériques essentiels dans une interface simple, rapide et gratuite. Vos fichiers restent sur votre appareil.</p>
             <div class="badge" style="margin-top:6px">${I.shield} 100 % local</div>
           </div>
@@ -63,19 +63,19 @@
           </div>
           <div class="footer-col">
             <h5>Ressources</h5>
-            <a href="#/outils">Tous les outils</a>
-            <a href="#/faq">Questions fréquentes</a>
-            <a href="#/confidentialite">Confidentialité</a>
-            <a href="#/conditions-utilisation">Conditions d’utilisation</a>
-            <a href="#/a-propos">À propos</a>
-            <a href="#/contact">Contact</a>
+            <a href="outils.html">Tous les outils</a>
+            <a href="faq.html">Questions fréquentes</a>
+            <a href="confidentialite.html">Confidentialité</a>
+            <a href="conditions-utilisation.html">Conditions d’utilisation</a>
+            <a href="a-propos.html">À propos</a>
+            <a href="contact.html">Contact</a>
           </div>
           <div class="footer-col">
             <h5>Bon à savoir</h5>
-            <a href="#/faq">Aucun envoi de fichier</a>
-            <a href="#/faq">Sans inscription</a>
-            <a href="#/faq">Sans limite d’usage</a>
-            <a href="#/conditions-utilisation">Mentions légales</a>
+            <a href="faq.html">Aucun envoi de fichier</a>
+            <a href="faq.html">Sans inscription</a>
+            <a href="faq.html">Sans limite d’usage</a>
+            <a href="conditions-utilisation.html">Mentions légales</a>
           </div>
         </div>
         <div class="footer-bottom">
@@ -88,7 +88,7 @@
   /* ====================== Cartes d'outils ====================== */
   function toolCard(t) {
     return `
-      <a class="tool-card" href="#/outil/${t.slug}">
+      <a class="tool-card" href="${t.slug}.html">
         <div class="tool-ico ${t.color || ''}">${I[t.icon] || I.filePdf}</div>
         <div>
           <h3>${t.name}</h3>
@@ -109,8 +109,8 @@
           <h1>Vos outils PDF,<br><span class="grad">simples et gratuits.</span></h1>
           <p class="lead">Fusionnez, divisez, compressez, convertissez et signez vos documents en quelques secondes. Tout est traité directement dans votre navigateur.</p>
           <div class="hero-cta">
-            <a class="btn btn-primary btn-lg" href="#/outils">Découvrir les outils ${I.arrowRight}</a>
-            <a class="btn btn-lg" href="#/outil/fusionner-pdf">${I.merge} Fusionner un PDF</a>
+            <a class="btn btn-primary btn-lg" href="outils.html">Découvrir les outils ${I.arrowRight}</a>
+            <a class="btn btn-lg" href="fusionner-pdf.html">${I.merge} Fusionner un PDF</a>
           </div>
           <div class="hero-stats">
             <div class="stat"><b>${O.tools.length}</b><span>outils disponibles</span></div>
@@ -128,7 +128,7 @@
               <h2>Les outils les plus utilisés</h2>
               <p>Une sélection pour vos tâches PDF du quotidien.</p>
             </div>
-            <a class="btn btn-sm" href="#/outils">Voir les ${O.tools.length} outils ${I.chevronRight}</a>
+            <a class="btn btn-sm" href="outils.html">Voir les ${O.tools.length} outils ${I.chevronRight}</a>
           </div>
           <div class="tool-grid">${featured.map(toolCard).join('')}</div>
         </div>
@@ -166,7 +166,7 @@
               <h2 style="margin-bottom:6px">Besoin d’un outil qui n’existe pas encore ?</h2>
               <p class="muted" style="margin:0">Dites-nous ce qui vous manque : Outipro évolue en fonction des usages réels.</p>
             </div>
-            <a class="btn btn-primary" href="#/a-propos">En savoir plus ${I.arrowRight}</a>
+            <a class="btn btn-primary" href="a-propos.html">En savoir plus ${I.arrowRight}</a>
           </div>
         </div>
       </section>`;
@@ -178,7 +178,7 @@
     return `
       <section class="tool-page">
         <div class="container">
-          <div class="breadcrumb"><a href="#/">Accueil</a> ${I.chevronRight} <span>Tous les outils</span></div>
+          <div class="breadcrumb"><a href="index.html">Accueil</a> ${I.chevronRight} <span>Tous les outils</span></div>
           <div class="tool-head">
             <div class="tool-ico">${I.layers}</div>
             <div>
@@ -200,8 +200,8 @@
       <section class="tool-page">
         <div class="container">
           <div class="breadcrumb">
-            <a href="#/">Accueil</a> ${I.chevronRight}
-            <a href="#/outils">Outils</a> ${I.chevronRight}
+            <a href="index.html">Accueil</a> ${I.chevronRight}
+            <a href="outils.html">Outils</a> ${I.chevronRight}
             <span>${tool.name}</span>
           </div>
           <div class="tool-head">
@@ -270,7 +270,7 @@
     return `
       <section class="tool-page">
         <div class="container">
-          <div class="breadcrumb"><a href="#/">Accueil</a> ${I.chevronRight} <span>FAQ</span></div>
+          <div class="breadcrumb"><a href="index.html">Accueil</a> ${I.chevronRight} <span>FAQ</span></div>
           <div class="tool-head"><div class="tool-ico c-sky">${I.info}</div><div><h1>Questions fréquentes</h1><p>Tout ce qu’il faut savoir sur Outipro et le traitement de vos fichiers.</p></div></div>
           <div class="faq">${items.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}</div>
         </div>
@@ -282,7 +282,7 @@
     return `
       <section class="tool-page">
         <div class="container">
-          <div class="breadcrumb"><a href="#/">Accueil</a> ${I.chevronRight} <span>Contact</span></div>
+          <div class="breadcrumb"><a href="index.html">Accueil</a> ${I.chevronRight} <span>Contact</span></div>
           <div class="tool-head"><div class="tool-ico c-sky">${I.mail}</div><div><h1>Nous contacter</h1><p>Une question, un bug, une suggestion d’outil ? Écrivez-nous, nous lisons chaque message.</p></div></div>
 
           <div class="contact-grid">
@@ -319,7 +319,7 @@
             <p>Nous ne pouvons ni récupérer un fichier que vous auriez perdu, ni déverrouiller un PDF protégé par mot de passe, ni restaurer un document supprimé de votre appareil : aucun fichier ne transite par nos soins, il n’existe donc aucune copie de sauvegarde de notre côté. De la même manière, nous ne fournissons pas d’assistance juridique sur la valeur d’un document signé ou modifié via la plateforme.</p>
 
             <h2>Questions fréquentes</h2>
-            <p>Avant d’écrire, jetez un œil à la <a href="#/faq">FAQ</a> : elle répond déjà aux interrogations les plus courantes sur la confidentialité, la taille des fichiers, les PDF protégés et la qualité de compression. Le détail du traitement des données figure dans la <a href="#/confidentialite">politique de confidentialité</a>, et les règles d’usage dans les <a href="#/conditions-utilisation">conditions d’utilisation</a>.</p>
+            <p>Avant d’écrire, jetez un œil à la <a href="faq.html">FAQ</a> : elle répond déjà aux interrogations les plus courantes sur la confidentialité, la taille des fichiers, les PDF protégés et la qualité de compression. Le détail du traitement des données figure dans la <a href="confidentialite.html">politique de confidentialité</a>, et les règles d’usage dans les <a href="conditions-utilisation.html">conditions d’utilisation</a>.</p>
           </div>
         </div>
       </section>`;
@@ -329,7 +329,7 @@
     return `
       <section class="tool-page">
         <div class="container">
-          <div class="breadcrumb"><a href="#/">Accueil</a> ${I.chevronRight} <span>À propos</span></div>
+          <div class="breadcrumb"><a href="index.html">Accueil</a> ${I.chevronRight} <span>À propos</span></div>
           <div class="tool-head"><div class="tool-ico c-violet">${I.sparkles}</div><div><h1>À propos d’Outipro</h1><p>Des outils numériques utiles, sans friction ni contrepartie.</p></div></div>
           <div class="prose">
             <p>Outipro est né d’un constat simple : accomplir une tâche basique sur un PDF — fusionner deux fichiers, retirer une page, ajouter un filigrane — implique trop souvent de créer un compte, d’accepter des cookies et de confier des documents parfois sensibles à un serveur inconnu.</p>
@@ -354,7 +354,7 @@
     return `
       <section class="tool-page">
         <div class="container">
-          <div class="breadcrumb"><a href="#/">Accueil</a> ${I.chevronRight} <span>Confidentialité</span></div>
+          <div class="breadcrumb"><a href="index.html">Accueil</a> ${I.chevronRight} <span>Confidentialité</span></div>
           <div class="tool-head"><div class="tool-ico c-teal">${I.shield}</div><div><h1>Politique de confidentialité</h1><p>Ce que nous ne collectons pas, et pourquoi c’est important.</p></div></div>
           <div class="prose">
             <h2>Aucun fichier transmis</h2>
@@ -377,7 +377,7 @@
     return `
       <section class="tool-page">
         <div class="container">
-          <div class="breadcrumb"><a href="#/">Accueil</a> ${I.chevronRight} <span>Conditions d’utilisation</span></div>
+          <div class="breadcrumb"><a href="index.html">Accueil</a> ${I.chevronRight} <span>Conditions d’utilisation</span></div>
           <div class="tool-head"><div class="tool-ico c-sky">${I.filePdf}</div><div><h1>Conditions d’utilisation</h1><p>Les règles simples qui encadrent l’usage d’Outipro. Dernière mise à jour : ${maj}.</p></div></div>
           <div class="prose">
             <h2>1. Objet</h2>
@@ -405,7 +405,7 @@
             <p>L’interface, les textes, les éléments graphiques et le code de la plateforme sont protégés par le droit d’auteur. Les bibliothèques tierces utilisées pour le traitement des fichiers sont distribuées sous leurs licences respectives, lesquelles prévalent pour ces composants. Toute reproduction de l’interface à des fins commerciales sans autorisation est interdite.</p>
 
             <h2>9. Données personnelles</h2>
-            <p>L’utilisation d’Outipro n’entraîne aucune collecte de données personnelles. Le détail de ce fonctionnement figure dans la <a href="#/confidentialite">politique de confidentialité</a>, qui fait partie intégrante des présentes conditions.</p>
+            <p>L’utilisation d’Outipro n’entraîne aucune collecte de données personnelles. Le détail de ce fonctionnement figure dans la <a href="confidentialite.html">politique de confidentialité</a>, qui fait partie intégrante des présentes conditions.</p>
 
             <h2>10. Modification des conditions</h2>
             <p>Ces conditions peuvent être adaptées pour refléter une évolution du service ou de la réglementation. La version applicable est celle publiée sur cette page au moment de votre utilisation. En cas de changement substantiel, la date de mise à jour affichée en tête de page est modifiée.</p>
@@ -414,7 +414,7 @@
             <p>Les présentes conditions sont régies par le droit français. En cas de difficulté, une solution amiable sera recherchée en priorité. À défaut, les juridictions compétentes seront celles du ressort du siège de l’éditeur, sous réserve des règles impératives protégeant les consommateurs.</p>
 
             <h2>12. Contact</h2>
-            <p>Pour toute question relative à ces conditions ou au fonctionnement des outils, les demandes peuvent être adressées via la page <a href="#/a-propos">À propos</a>.</p>
+            <p>Pour toute question relative à ces conditions ou au fonctionnement des outils, les demandes peuvent être adressées via la page <a href="a-propos.html">À propos</a>.</p>
           </div>
         </div>
       </section>`;
@@ -427,7 +427,7 @@
           <div class="tool-ico" style="margin:0 auto 18px;width:64px;height:64px">${I.alert}</div>
           <h1>Page introuvable</h1>
           <p class="muted">Le lien que vous avez suivi n’existe pas ou a été déplacé.</p>
-          <a class="btn btn-primary mt-2" href="#/outils">Voir tous les outils</a>
+          <a class="btn btn-primary mt-2" href="outils.html">Voir tous les outils</a>
         </div>
       </section>`;
   }
@@ -537,36 +537,120 @@
     O.$$('.nav a').forEach((a) => a.classList.toggle('active', a.dataset.nav === key));
   }
 
+  const SITE = (function () {
+    const l = document.querySelector('link[rel="canonical"]');
+    return l ? l.href.replace(/[^/]*$/, '') : location.href.replace(/[^/]*$/, '');
+  })();
+
+  const PAGE_META = {
+    home: { title: 'Outipro — Outils PDF gratuits, simples et confidentiels',
+      desc: 'Fusionnez, divisez, compressez, convertissez et signez vos PDF gratuitement. Tous les outils Outipro fonctionnent dans votre navigateur : aucun fichier n’est envoyé.' },
+    tools: { title: 'Tous les outils PDF gratuits — Outipro',
+      desc: '18 outils PDF, Word et image gratuits : fusionner, diviser, compresser, convertir, signer, organiser. Sans inscription, sans envoi de fichier.' },
+    faq: { title: 'FAQ — questions fréquentes sur les outils PDF',
+      desc: 'Vos fichiers sont-ils envoyés ? Y a-t-il une limite de taille ? Les réponses aux questions fréquentes sur les outils PDF gratuits d’Outipro.' },
+    about: { title: 'À propos d’Outipro — outils PDF locaux',
+      desc: 'Outipro réunit des outils PDF gratuits qui fonctionnent entièrement dans votre navigateur. Aucun envoi de fichier, aucune inscription.' },
+    contact: { title: 'Contacter Outipro — support et suggestions',
+      desc: 'Une question, un bug, une suggestion d’outil ? Écrivez à l’équipe Outipro à l’adresse sonoreluc30@gmail.com.' },
+    privacy: { title: 'Politique de confidentialité — Outipro',
+      desc: 'Aucun fichier envoyé, aucun compte, aucun traçage publicitaire. Découvrez précisément quelles données Outipro traite.' },
+    terms: { title: 'Conditions d’utilisation — Outipro',
+      desc: 'Les conditions d’utilisation des outils PDF gratuits Outipro : usage acceptable, disponibilité, garanties et responsabilité.' }
+  };
+
+  const FILE_ROUTES = {
+    '': 'home', 'index.html': 'home', 'outils.html': 'tools', 'faq.html': 'faq',
+    'a-propos.html': 'about', 'contact.html': 'contact',
+    'confidentialite.html': 'privacy', 'conditions-utilisation.html': 'terms'
+  };
+
+  const HASH_MAP = {
+    '': 'index.html', 'outils': 'outils.html', 'faq': 'faq.html', 'a-propos': 'a-propos.html',
+    'contact': 'contact.html', 'confidentialite': 'confidentialite.html',
+    'conditions-utilisation': 'conditions-utilisation.html'
+  };
+
+  function currentFile() {
+    const base = location.pathname.split('/').pop();
+    return base || 'index.html';
+  }
+
+  /* Compatibilité avec les anciennes URL en #/ : on les réécrit en URL réelles */
+  function migrateHash() {
+    const raw = location.hash.replace(/^#\/?/, '');
+    if (!raw) return;
+    const parts = raw.split('/').filter(Boolean);
+    let target = HASH_MAP[parts[0]];
+    if (!target && parts[0] === 'outil' && parts[1]) target = parts[1] + '.html';
+    if (!target) return;
+    const dir = location.pathname.replace(/[^/]*$/, '');
+    history.replaceState(null, '', dir + target);
+  }
+
+  function parseRoute() {
+    migrateHash();
+    const file = currentFile();
+    if (FILE_ROUTES[file] !== undefined) return { type: FILE_ROUTES[file], file };
+    const slug = file.replace(/\.html$/, '');
+    if (O.tools.some((t) => t.slug === slug)) return { type: 'tool', slug, file };
+    return { type: '404', file };
+  }
+
+  const SEO = window.OUTIPRO_SEO || {};
+  function metaFor(key, fallbackTitle, fallbackDesc) {
+    const m = SEO[key];
+    return { title: (m && m.t) || fallbackTitle, desc: (m && m.d) || fallbackDesc };
+  }
+
+  function setMeta(title, desc, file) {
+    document.title = title;
+    const d = document.querySelector('meta[name="description"]');
+    if (d) d.setAttribute('content', desc);
+    const c = document.querySelector('link[rel="canonical"]');
+    if (c) c.setAttribute('href', SITE + (file === 'index.html' ? '' : file));
+    const og = document.querySelector('meta[property="og:url"]');
+    if (og) og.setAttribute('content', SITE + (file === 'index.html' ? '' : file));
+    const ot = document.querySelector('meta[property="og:title"]');
+    if (ot) ot.setAttribute('content', title);
+    const od = document.querySelector('meta[property="og:description"]');
+    if (od) od.setAttribute('content', desc);
+  }
+
   function route() {
-    const hash = location.hash.replace(/^#/, '') || '/';
-    const parts = hash.split('/').filter(Boolean);
+    const r = parseRoute();
     window.scrollTo(0, 0);
 
-    if (parts.length === 0) {
+    if (r.type === 'home') {
       app.innerHTML = pageHome();
       setActiveNav('home');
-      document.title = 'Outipro — Outils PDF gratuits, simples et confidentiels';
-    } else if (parts[0] === 'outils') {
+      setMeta(PAGE_META.home.title, PAGE_META.home.desc, 'index.html');
+    } else if (r.type === 'tools') {
       app.innerHTML = pageTools();
       setActiveNav('tools');
-      document.title = 'Tous les outils — Outipro';
-    } else if (parts[0] === 'outil' && parts[1]) {
-      const tool = O.tools.find((t) => t.slug === parts[1]);
-      if (!tool) { app.innerHTML = page404(); return; }
+      setMeta(PAGE_META.tools.title, PAGE_META.tools.desc, 'outils.html');
+    } else if (r.type === 'tool') {
+      const tool = O.tools.find((t) => t.slug === r.slug);
       app.innerHTML = pageTool(tool);
       setActiveNav('tools');
-      document.title = `${tool.name} — Outipro`;
+      const tm = metaFor(r.slug, `${tool.name} — Outipro`, tool.desc);
+      setMeta(tm.title, tm.desc, r.file);
       mountTool(tool);
-    } else if (parts[0] === 'faq') {
-      app.innerHTML = pageFaq(); setActiveNav('faq'); document.title = 'FAQ — Outipro';
-    } else if (parts[0] === 'a-propos') {
-      app.innerHTML = pageAbout(); setActiveNav('about'); document.title = 'À propos — Outipro';
-    } else if (parts[0] === 'confidentialite') {
-      app.innerHTML = pagePrivacy(); setActiveNav(''); document.title = 'Confidentialité — Outipro';
-    } else if (parts[0] === 'conditions-utilisation') {
-      app.innerHTML = pageTerms(); setActiveNav(''); document.title = 'Conditions d’utilisation — Outipro';
-    } else if (parts[0] === 'contact') {
-      app.innerHTML = pageContact(); setActiveNav('contact'); document.title = 'Contact — Outipro';
+    } else if (r.type === 'faq') {
+      app.innerHTML = pageFaq(); setActiveNav('faq');
+      setMeta(PAGE_META.faq.title, PAGE_META.faq.desc, 'faq.html');
+    } else if (r.type === 'about') {
+      app.innerHTML = pageAbout(); setActiveNav('about');
+      setMeta(PAGE_META.about.title, PAGE_META.about.desc, 'a-propos.html');
+    } else if (r.type === 'privacy') {
+      app.innerHTML = pagePrivacy(); setActiveNav('');
+      setMeta(PAGE_META.privacy.title, PAGE_META.privacy.desc, 'confidentialite.html');
+    } else if (r.type === 'terms') {
+      app.innerHTML = pageTerms(); setActiveNav('');
+      setMeta(PAGE_META.terms.title, PAGE_META.terms.desc, 'conditions-utilisation.html');
+    } else if (r.type === 'contact') {
+      app.innerHTML = pageContact(); setActiveNav('contact');
+      setMeta(PAGE_META.contact.title, PAGE_META.contact.desc, 'contact.html');
       const copyBtn = document.getElementById('copy-mail');
       if (copyBtn) copyBtn.addEventListener('click', async () => {
         const mail = copyBtn.getAttribute('data-mail');
@@ -574,18 +658,31 @@
           await navigator.clipboard.writeText(mail);
           copyBtn.innerHTML = `${I.check} Adresse copiée`;
           setTimeout(() => { copyBtn.innerHTML = `${I.copy} Copier l’adresse`; }, 2200);
-        } catch (e) {
-          O.toast(mail);
-        }
+        } catch (e) { O.toast(mail); }
       });
     } else {
       app.innerHTML = page404(); setActiveNav('');
-      document.title = 'Page introuvable — Outipro';
+      setMeta('Page introuvable — Outipro', 'La page demandée n’existe pas ou a été déplacée.', '404.html');
     }
   }
 
+  /* Navigation interne sans rechargement, sur de vraies URL */
+  document.addEventListener('click', (ev) => {
+    if (ev.defaultPrevented || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+    const a = ev.target.closest('a');
+    if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+    const href = a.getAttribute('href') || '';
+    if (!/^[a-z0-9][a-z0-9-]*\.html(#.*)?$/i.test(href)) return;
+    ev.preventDefault();
+    const file = href.split('#')[0];
+    if (file === currentFile()) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    history.pushState(null, '', file);
+    route();
+  });
+
+  window.addEventListener('popstate', route);
+
   renderChrome();
-  window.addEventListener('hashchange', route);
   route();
   O.route = route;
 })();

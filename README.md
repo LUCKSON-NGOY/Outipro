@@ -120,11 +120,29 @@ O.tools.push({
 });
 ```
 
-Ajouter un outil ne demande donc ni route, ni entrée de menu : le routeur `#/outil/{slug}` et les cartes de la page d'accueil sont générés à partir du registre.
+Ajouter un outil demande ensuite d'ajouter son entrée éditoriale dans `seo/content.py` puis de relancer le générateur : la page statique, la carte d'accueil, le maillage interne et l'entrée de sitemap sont produits automatiquement.
 
 ### Routage et thème
 
-La navigation repose sur un routeur par hash (`#/`, `#/outils`, `#/outil/{slug}`, `#/faq`, `#/a-propos`, `#/confidentialite`), sans dépendance externe. Le thème clair ou sombre se choisit dans l'en-tête, s'applique via l'attribut `html[data-theme]` et se mémorise dans `localStorage` sous la clé `outipro-theme`. Le design system s'appuie sur des variables CSS, ce qui rend la bascule instantanée et sans rechargement.
+La navigation repose sur de vraies URL, une par page : `index.html`, `outils.html`, `fusionner-pdf.html`, `faq.html`, `a-propos.html`, `contact.html`, `confidentialite.html`, `conditions-utilisation.html`. Chaque fichier est autonome, avec son propre `<title>`, sa description, sa canonique et ses données structurées, ce qui le rend indexable individuellement. Une fois la page chargée, les liens internes sont interceptés et rendus côté client via `history.pushState` : la navigation reste instantanée, sans rechargement, tout en conservant des URL propres. Les anciennes adresses par hash (`#/outil/compresser-pdf`) sont redirigées vers leur fichier correspondant par `history.replaceState`, donc aucun lien existant ne casse.
+
+Le thème clair ou sombre se choisit dans l'en-tête, s'applique via l'attribut `html[data-theme]` et se mémorise dans `localStorage` sous la clé `outipro-theme`. Le design system s'appuie sur des variables CSS, ce qui rend la bascule instantanée et sans rechargement.
+
+## Référencement (SEO)
+
+Le site est généré, pas écrit à la main. Le dossier `seo/` contient deux fichiers :
+
+- `seo/content.py` — la source éditoriale : pour chacun des 18 outils, un titre SEO, une méta-description, un H1, une introduction, la section « Quand l'utiliser » (3 points), « Comment ça marche » (3 étapes), une FAQ de 3 questions et 3 outils complémentaires. Les six pages institutionnelles suivent le même schéma.
+- `seo/build.py` — le générateur. Il produit les 26 pages HTML, `sitemap.xml`, `robots.txt` et `assets/js/seo-data.js` (la table des titres et descriptions consommée par le routeur).
+
+```bash
+python3 seo/build.py            # régénère toutes les pages
+SITE_URL=https://exemple.fr python3 seo/build.py   # canoniques sur un autre domaine
+```
+
+Chaque page embarque : une canonique absolue, `robots` avec `max-image-preview:large` et `max-snippet:-1`, les balises Open Graph et Twitter Card avec une image de partage 1200 × 630, et un bloc JSON-LD `@graph` combinant `Organization`, `WebSite`, `BreadcrumbList`, `WebPage` et, selon le type de page, `SoftwareApplication` + `HowTo` + `FAQPage` (outils), `ItemList` (catalogue) ou `FAQPage` (FAQ). Le contenu éditorial est rendu côté serveur dans le HTML, sous l'outil : il est donc lisible par les robots sans exécuter JavaScript. Le maillage interne relie chaque outil à trois outils complémentaires et à sa catégorie, ce qui évite les pages orphelines.
+
+`seo_audit.py` vérifie l'ensemble : longueur des titres (25–65 caractères) et des descriptions (70–170), absence de doublons, une seule balise H1 par page, validité du JSON-LD, présence de la canonique et de l'image Open Graph. Le rapport attendu est de 26 pages et zéro anomalie.
 
 ## Lancer le projet en local
 
