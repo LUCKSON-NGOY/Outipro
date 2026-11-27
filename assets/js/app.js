@@ -65,6 +65,7 @@
             <a href="#/outils">Tous les outils</a>
             <a href="#/faq">Questions fréquentes</a>
             <a href="#/confidentialite">Confidentialité</a>
+            <a href="#/conditions-utilisation">Conditions d’utilisation</a>
             <a href="#/a-propos">À propos</a>
           </div>
           <div class="footer-col">
@@ -72,7 +73,7 @@
             <a href="#/faq">Aucun envoi de fichier</a>
             <a href="#/faq">Sans inscription</a>
             <a href="#/faq">Sans limite d’usage</a>
-            <a href="https://github.com/LUCKSON-NGOY/Outipro" target="_blank" rel="noopener">Code source</a>
+            <a href="#/conditions-utilisation">Mentions légales</a>
           </div>
         </div>
         <div class="footer-bottom">
@@ -143,7 +144,7 @@
             <div class="feature"><div class="fi">${I.lock}</div><div><h4>Confidentiel par défaut</h4><p>Vos documents ne quittent jamais votre appareil. Aucun téléversement.</p></div></div>
             <div class="feature"><div class="fi">${I.zap}</div><div><h4>Instantané</h4><p>Le traitement s’effectue localement, sans file d’attente ni limite de débit.</p></div></div>
             <div class="feature"><div class="fi">${I.globe}</div><div><h4>Fonctionne partout</h4><p>Ordinateur, tablette ou mobile : un navigateur moderne suffit.</p></div></div>
-            <div class="feature"><div class="fi">${I.heart}</div><div><h4>Gratuit et ouvert</h4><p>Aucun abonnement, aucune publicité intrusive, code source public.</p></div></div>
+            <div class="feature"><div class="fi">${I.heart}</div><div><h4>Gratuit et ouvert</h4><p>Aucun abonnement, aucune publicité, aucune limite d’usage.</p></div></div>
           </div>
         </div>
       </section>
@@ -163,7 +164,7 @@
               <h2 style="margin-bottom:6px">Besoin d’un outil qui n’existe pas encore ?</h2>
               <p class="muted" style="margin:0">Dites-nous ce qui vous manque : Outipro évolue en fonction des usages réels.</p>
             </div>
-            <a class="btn btn-primary" href="https://github.com/LUCKSON-NGOY/Outipro/issues/new" target="_blank" rel="noopener">Proposer une idée ${I.arrowRight}</a>
+            <a class="btn btn-primary" href="#/a-propos">En savoir plus ${I.arrowRight}</a>
           </div>
         </div>
       </section>`;
@@ -256,7 +257,7 @@
   function pageFaq() {
     const items = [
       ['Mes fichiers sont-ils envoyés sur un serveur ?', 'Non. Outipro fonctionne entièrement dans votre navigateur grâce à des technologies comme WebAssembly et Canvas. Aucun document n’est téléversé, stocké ou analysé sur un serveur.'],
-      ['Est-ce vraiment gratuit ?', 'Oui. Tous les outils sont gratuits et sans limite d’utilisation. Le projet est ouvert et le code source est publié sur GitHub.'],
+      ['Est-ce vraiment gratuit ?', 'Oui. Tous les outils sont gratuits et sans limite d’utilisation, sans abonnement ni option payante. Le service est financé par aucun revenu publicitaire : il repose sur un hébergement statique léger.'],
       ['Dois-je créer un compte ?', 'Aucun compte n’est nécessaire. Vous ouvrez un outil, vous déposez votre fichier, vous téléchargez le résultat.'],
       ['Y a-t-il une limite de taille ?', 'La limite dépend de la mémoire de votre appareil. En pratique, des fichiers de plusieurs centaines de mégaoctets passent sans problème sur un ordinateur récent.'],
       ['Pourquoi mon PDF protégé par mot de passe est-il refusé ?', 'Les outils ne peuvent pas déverrouiller un PDF chiffré. Retirez d’abord la protection dans votre lecteur PDF, puis revenez sur Outipro.'],
@@ -288,12 +289,12 @@
               <li><strong>Confidentialité structurelle</strong> — l’architecture rend l’envoi de fichiers techniquement impossible.</li>
               <li><strong>Simplicité</strong> — trois étapes, une interface lisible, pas de jargon.</li>
               <li><strong>Gratuité durable</strong> — un site statique léger, sans coût serveur prohibitif.</li>
-              <li><strong>Transparence</strong> — le code est public et auditable.</li>
+              <li><strong>Transparence</strong> — aucune collecte cachée, aucune condition dissimulée.</li>
             </ul>
             <h2>Technologies</h2>
             <p>Outipro s’appuie sur pdf-lib pour la manipulation des documents, PDF.js pour le rendu et l’extraction, jsPDF pour la génération, JSZip pour les archives et Mammoth pour la conversion Word. L’ensemble est servi sous forme de fichiers statiques.</p>
             <h2>Contribuer</h2>
-            <p>Le projet est ouvert aux suggestions et aux contributions. Signalez un bug, proposez un outil ou améliorez la documentation depuis le dépôt GitHub.</p>
+            <p>Les suggestions d’amélioration et les signalements de dysfonctionnement sont bienvenus. Si un outil produit un résultat inattendu, décrivez le fichier concerné et l’option choisie : ces retours guident directement les évolutions de la plateforme.</p>
           </div>
         </div>
       </section>`;
@@ -315,7 +316,55 @@
             <h2>Mesure d’audience</h2>
             <p>Aucun traceur publicitaire n’est intégré. Si une mesure d’audience anonyme venait à être ajoutée, elle serait documentée ici et n’identifierait pas les personnes.</p>
             <h2>Vos droits</h2>
-            <p>Puisque nous ne détenons aucune donnée personnelle vous concernant, il n’y a rien à supprimer ni à exporter de notre côté. Pour toute question, ouvrez une discussion sur le dépôt GitHub.</p>
+            <p>Puisque nous ne détenons aucune donnée personnelle vous concernant, il n’y a rien à supprimer ni à exporter de notre côté. Les droits d’accès, de rectification et d’effacement prévus par le RGPD s’appliquent donc sans objet : aucune donnée n’existe côté serveur.</p>
+          </div>
+        </div>
+      </section>`;
+  }
+
+  function pageTerms() {
+    const maj = '1er janvier 2025';
+    return `
+      <section class="tool-page">
+        <div class="container">
+          <div class="breadcrumb"><a href="#/">Accueil</a> ${I.chevronRight} <span>Conditions d’utilisation</span></div>
+          <div class="tool-head"><div class="tool-ico c-sky">${I.filePdf}</div><div><h1>Conditions d’utilisation</h1><p>Les règles simples qui encadrent l’usage d’Outipro. Dernière mise à jour : ${maj}.</p></div></div>
+          <div class="prose">
+            <h2>1. Objet</h2>
+            <p>Outipro est une plateforme gratuite mettant à disposition des outils de traitement de fichiers PDF, d’images et de documents texte. L’ensemble des traitements s’effectue localement, dans le navigateur de l’utilisateur. En accédant au site et en utilisant ses outils, vous acceptez sans réserve les présentes conditions. Si vous ne les acceptez pas, il vous suffit de ne pas utiliser le service.</p>
+
+            <h2>2. Gratuité et absence de compte</h2>
+            <p>L’accès aux outils est entièrement gratuit et ne requiert ni inscription, ni adresse électronique, ni information de paiement. Aucune limite de nombre de fichiers, de volume traité ou de fréquence d’utilisation n’est imposée par la plateforme. Les seules limites sont techniques et dépendent de la mémoire disponible sur votre appareil.</p>
+
+            <h2>3. Vos fichiers restent les vôtres</h2>
+            <p>Outipro ne revendique aucun droit sur les documents que vous traitez. Aucun fichier n’est téléversé, copié ou conservé sur un serveur : les documents sont chargés dans la mémoire de la page, transformés sur votre machine, puis restitués sous forme de téléchargement. Vous demeurez seul responsable du contenu que vous traitez et de la licéité de ce contenu.</p>
+
+            <h2>4. Usage acceptable</h2>
+            <p>Vous vous engagez à ne pas utiliser Outipro pour porter atteinte aux droits de tiers. Il est notamment interdit de modifier ou de falsifier un document dans le but de tromper autrui, de contrefaire une signature ou un sceau, de produire des pièces destinées à une fraude, ou de traiter des contenus dont la détention est illégale. L’outil de signature apposée sur un PDF constitue une reproduction visuelle d’un tracé : elle ne possède pas, à elle seule, la valeur juridique d’une signature électronique qualifiée au sens du règlement eIDAS.</p>
+
+            <h2>5. Disponibilité</h2>
+            <p>Le service est fourni en l’état, sans engagement de disponibilité. Il peut être interrompu, modifié ou retiré à tout moment, notamment pour des raisons de maintenance ou d’hébergement. Comme le traitement est local, une copie du site chargée dans votre navigateur continue de fonctionner même en cas d’indisponibilité du serveur d’origine.</p>
+
+            <h2>6. Absence de garantie</h2>
+            <p>Les outils sont mis à disposition sans garantie d’exactitude, d’exhaustivité ou d’adéquation à un usage particulier. La conversion de formats, la compression et l’extraction de texte peuvent produire des résultats partiels ou une dégradation de la qualité, inhérents à ces opérations. Il vous appartient de vérifier chaque document produit avant de l’utiliser, de le transmettre ou de l’archiver.</p>
+
+            <h2>7. Limitation de responsabilité</h2>
+            <p>Dans les limites permises par la loi, Outipro ne saurait être tenu responsable des dommages directs ou indirects résultant de l’utilisation ou de l’impossibilité d’utiliser le service, notamment la perte de données, la perte d’un document original, un préjudice commercial ou une conséquence liée à un document produit par les outils. Conservez toujours une copie de vos fichiers d’origine avant tout traitement.</p>
+
+            <h2>8. Propriété intellectuelle</h2>
+            <p>L’interface, les textes, les éléments graphiques et le code de la plateforme sont protégés par le droit d’auteur. Les bibliothèques tierces utilisées pour le traitement des fichiers sont distribuées sous leurs licences respectives, lesquelles prévalent pour ces composants. Toute reproduction de l’interface à des fins commerciales sans autorisation est interdite.</p>
+
+            <h2>9. Données personnelles</h2>
+            <p>L’utilisation d’Outipro n’entraîne aucune collecte de données personnelles. Le détail de ce fonctionnement figure dans la <a href="#/confidentialite">politique de confidentialité</a>, qui fait partie intégrante des présentes conditions.</p>
+
+            <h2>10. Modification des conditions</h2>
+            <p>Ces conditions peuvent être adaptées pour refléter une évolution du service ou de la réglementation. La version applicable est celle publiée sur cette page au moment de votre utilisation. En cas de changement substantiel, la date de mise à jour affichée en tête de page est modifiée.</p>
+
+            <h2>11. Droit applicable</h2>
+            <p>Les présentes conditions sont régies par le droit français. En cas de difficulté, une solution amiable sera recherchée en priorité. À défaut, les juridictions compétentes seront celles du ressort du siège de l’éditeur, sous réserve des règles impératives protégeant les consommateurs.</p>
+
+            <h2>12. Contact</h2>
+            <p>Pour toute question relative à ces conditions ou au fonctionnement des outils, les demandes peuvent être adressées via la page <a href="#/a-propos">À propos</a>.</p>
           </div>
         </div>
       </section>`;
@@ -464,6 +513,8 @@
       app.innerHTML = pageAbout(); setActiveNav('about'); document.title = 'À propos — Outipro';
     } else if (parts[0] === 'confidentialite') {
       app.innerHTML = pagePrivacy(); setActiveNav(''); document.title = 'Confidentialité — Outipro';
+    } else if (parts[0] === 'conditions-utilisation') {
+      app.innerHTML = pageTerms(); setActiveNav(''); document.title = 'Conditions d’utilisation — Outipro';
     } else {
       app.innerHTML = page404(); setActiveNav('');
       document.title = 'Page introuvable — Outipro';
