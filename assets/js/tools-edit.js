@@ -321,7 +321,7 @@
         wrap.appendChild(canvas);
         api.signPos = { x: 0.68, y: 0.82 };
         const marker = document.createElement('div');
-        marker.style.cssText = 'position:absolute;border:2px dashed #4f46e5;border-radius:4px;pointer-events:none;display:none;background:rgba(99,102,241,.10)';
+        marker.style.cssText = 'position:absolute;border:2px dashed #2563eb;border-radius:4px;pointer-events:none;display:none;background:rgba(37,99,235,.10)';
         wrap.style.position = 'relative';
         wrap.appendChild(marker);
         const place = (e) => {

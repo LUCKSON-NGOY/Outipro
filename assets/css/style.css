@@ -4,27 +4,28 @@
    ========================================================================== */
 
 :root {
-  --brand-50: #eef2ff;
-  --brand-100: #e0e7ff;
-  --brand-200: #c7d2fe;
-  --brand-400: #818cf8;
-  --brand-500: #6366f1;
-  --brand-600: #4f46e5;
-  --brand-700: #4338ca;
-  --violet-500: #8b5cf6;
-  --violet-600: #7c3aed;
-  --teal-500: #14b8a6;
+  --brand-50: #eff6ff;
+  --brand-100: #dbeafe;
+  --brand-200: #bfdbfe;
+  --brand-400: #60a5fa;
+  --brand-500: #3b82f6;
+  --brand-600: #2563eb;
+  --brand-700: #1d4ed8;
+  --brand-800: #1e40af;
+  --violet-500: #3b82f6;
+  --violet-600: #2563eb;
+  --teal-500: #0ea5e9;
 
-  --ink: #0b1220;
-  --ink-2: #1e293b;
-  --muted: #64748b;
-  --muted-2: #94a3b8;
+  --ink: #0b1a33;
+  --ink-2: #1e3a5f;
+  --muted: #5b7091;
+  --muted-2: #94a6bd;
 
-  --bg: #f7f8fc;
+  --bg: #ffffff;
   --surface: #ffffff;
-  --surface-2: #f1f4fb;
-  --border: #e4e8f3;
-  --border-strong: #d3daea;
+  --surface-2: #f4f8ff;
+  --border: #e2ebf7;
+  --border-strong: #cfdff2;
 
   --success: #10b981;
   --success-bg: #ecfdf5;
@@ -41,14 +42,14 @@
   --shadow-sm: 0 2px 8px rgba(15, 23, 42, .06);
   --shadow: 0 10px 30px -12px rgba(15, 23, 42, .18);
   --shadow-lg: 0 24px 60px -20px rgba(15, 23, 42, .28);
-  --shadow-brand: 0 14px 34px -14px rgba(79, 70, 229, .55);
+  --shadow-brand: 0 14px 34px -14px rgba(37, 99, 235, .55);
 
   --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --maxw: 1180px;
   --header-h: 72px;
 
-  --grad: linear-gradient(120deg, #4f46e5 0%, #7c3aed 55%, #a855f7 100%);
-  --grad-soft: linear-gradient(120deg, rgba(79, 70, 229, .10), rgba(168, 85, 247, .10));
+  --grad: linear-gradient(120deg, #1d4ed8 0%, #2563eb 55%, #3b82f6 100%);
+  --grad-soft: linear-gradient(120deg, rgba(37, 99, 235, .08), rgba(59, 130, 246, .08));
 }
 
 html[data-theme="dark"] {
@@ -56,20 +57,20 @@ html[data-theme="dark"] {
   --ink-2: #e2e8f0;
   --muted: #94a3b8;
   --muted-2: #64748b;
-  --bg: #070b14;
-  --surface: #0f172a;
-  --surface-2: #131d33;
-  --border: #1e2b45;
-  --border-strong: #2b3b5c;
-  --brand-50: #171d3a;
-  --brand-100: #1d2550;
-  --brand-200: #2c3775;
+  --bg: #060d1a;
+  --surface: #0c1729;
+  --surface-2: #10203a;
+  --border: #1a2c48;
+  --border-strong: #27405f;
+  --brand-50: #10203a;
+  --brand-100: #16294a;
+  --brand-200: #1f3d6b;
   --success-bg: #06281f;
   --danger-bg: #2b1114;
   --shadow: 0 12px 34px -14px rgba(0, 0, 0, .7);
   --shadow-lg: 0 28px 70px -24px rgba(0, 0, 0, .8);
   --shadow-sm: 0 2px 10px rgba(0, 0, 0, .4);
-  --grad-soft: linear-gradient(120deg, rgba(99, 102, 241, .16), rgba(168, 85, 247, .14));
+  --grad-soft: linear-gradient(120deg, rgba(37, 99, 235, .16), rgba(59, 130, 246, .14));
 }
 
 * { box-sizing: border-box; }
@@ -171,9 +172,9 @@ p { margin: 0 0 1em; }
 .hero::before {
   content: ""; position: absolute; inset: -40% -10% auto -10%; height: 640px;
   background:
-    radial-gradient(600px 300px at 20% 20%, rgba(99, 102, 241, .22), transparent 70%),
-    radial-gradient(700px 340px at 80% 0%, rgba(168, 85, 247, .20), transparent 70%),
-    radial-gradient(500px 260px at 55% 60%, rgba(20, 184, 166, .12), transparent 70%);
+    radial-gradient(600px 300px at 20% 20%, rgba(37, 99, 235, .14), transparent 70%),
+    radial-gradient(700px 340px at 80% 0%, rgba(59, 130, 246, .13), transparent 70%),
+    radial-gradient(500px 260px at 55% 60%, rgba(14, 165, 233, .09), transparent 70%);
   filter: blur(6px); pointer-events: none;
 }
 .hero::after {
@@ -192,7 +193,7 @@ p { margin: 0 0 1em; }
   font-size: .82rem; font-weight: 600; color: var(--muted);
   box-shadow: var(--shadow-xs); margin-bottom: 22px;
 }
-.pill .dot { width: 22px; height: 22px; border-radius: 999px; background: var(--success-bg); color: var(--success); display: grid; place-items: center; }
+.pill .dot { width: 22px; height: 22px; border-radius: 999px; background: var(--brand-50); color: var(--brand-600); display: grid; place-items: center; }
 .pill .dot svg { width: 13px; height: 13px; }
 
 .hero h1 { font-size: clamp(2.2rem, 5.2vw, 3.7rem); letter-spacing: -.035em; margin-bottom: 18px; }
@@ -233,16 +234,16 @@ p { margin: 0 0 1em; }
   background: var(--brand-50); color: var(--brand-600); border: 1px solid var(--brand-100);
 }
 .tool-ico svg { width: 23px; height: 23px; }
-.tool-ico.c-violet { background: #f5f3ff; color: #7c3aed; border-color: #ede9fe; }
-.tool-ico.c-teal { background: #f0fdfa; color: #0d9488; border-color: #ccfbf1; }
-.tool-ico.c-amber { background: #fffbeb; color: #d97706; border-color: #fef3c7; }
-.tool-ico.c-rose { background: #fff1f2; color: #e11d48; border-color: #ffe4e6; }
-.tool-ico.c-sky { background: #f0f9ff; color: #0284c7; border-color: #e0f2fe; }
-html[data-theme="dark"] .tool-ico.c-violet { background: #1d1636; border-color: #2e2356; }
-html[data-theme="dark"] .tool-ico.c-teal { background: #062b28; border-color: #0b3f3a; }
-html[data-theme="dark"] .tool-ico.c-amber { background: #2a1f08; border-color: #43310c; }
-html[data-theme="dark"] .tool-ico.c-rose { background: #2b0f16; border-color: #451722; }
-html[data-theme="dark"] .tool-ico.c-sky { background: #08202e; border-color: #0b3047; }
+.tool-ico.c-violet { background: #eff6ff; color: #1d4ed8; border-color: #dbeafe; }
+.tool-ico.c-teal { background: #f0f9ff; color: #0369a1; border-color: #e0f2fe; }
+.tool-ico.c-amber { background: #f4f8ff; color: #1e40af; border-color: #e2ebf7; }
+.tool-ico.c-rose { background: #eef4ff; color: #1e3a8a; border-color: #dbe7fb; }
+.tool-ico.c-sky { background: #f0f7ff; color: #2563eb; border-color: #dceafd; }
+html[data-theme="dark"] .tool-ico.c-violet { background: #10203a; border-color: #1f3d6b; }
+html[data-theme="dark"] .tool-ico.c-teal { background: #08202e; border-color: #0b3047; }
+html[data-theme="dark"] .tool-ico.c-amber { background: #0d1c33; border-color: #1a2c48; }
+html[data-theme="dark"] .tool-ico.c-rose { background: #0b1830; border-color: #172b47; }
+html[data-theme="dark"] .tool-ico.c-sky { background: #0a1a30; border-color: #16304f; }
 
 .tool-card h3 { font-size: 1.02rem; margin: 0; letter-spacing: -.015em; }
 .tool-card p { margin: 0; font-size: .87rem; color: var(--muted); line-height: 1.5; }
