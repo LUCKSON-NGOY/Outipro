@@ -152,6 +152,10 @@ Outipro fonctionne sur les versions récentes de Chrome, Edge, Firefox et Safari
 
 La compression de PDF fonctionne par rasterisation : les pages sont rendues en images, ce qui allège fortement les documents scannés ou riches en images, mais dégrade légèrement la netteté du texte et supprime la sélection de texte. C'est un compromis classique, assumé et expliqué dans l'interface. La conversion Word en PDF ne reprend pas les images du document d'origine et se concentre sur la structure textuelle. L'extraction de texte ne fait pas d'OCR : un PDF issu d'un scanner sans couche texte ne produira rien d'exploitable, et l'outil le signale explicitement plutôt que de rendre un fichier vide.
 
+## Contact
+
+Pour une question, un signalement de bug ou une suggestion d'outil : **sonoreluc30@gmail.com**. Merci de ne pas joindre vos documents — aucun fichier n'est nécessaire pour diagnostiquer un problème, et rien ne justifie de faire sortir un document sensible de votre appareil.
+
 ## Licence
 
 Distribué sous licence MIT. Voir le fichier [LICENSE](LICENSE).

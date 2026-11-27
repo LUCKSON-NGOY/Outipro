@@ -30,6 +30,7 @@
           <a href="#/outils" data-nav="tools">Tous les outils</a>
           <a href="#/faq" data-nav="faq">FAQ</a>
           <a href="#/a-propos" data-nav="about">À propos</a>
+          <a href="#/contact" data-nav="contact">Contact</a>
         </nav>
         <div class="header-actions">
           <button class="icon-btn" id="theme-btn" title="Changer de thème" aria-label="Changer de thème">${I.moon}</button>
@@ -67,6 +68,7 @@
             <a href="#/confidentialite">Confidentialité</a>
             <a href="#/conditions-utilisation">Conditions d’utilisation</a>
             <a href="#/a-propos">À propos</a>
+            <a href="#/contact">Contact</a>
           </div>
           <div class="footer-col">
             <h5>Bon à savoir</h5>
@@ -271,6 +273,54 @@
           <div class="breadcrumb"><a href="#/">Accueil</a> ${I.chevronRight} <span>FAQ</span></div>
           <div class="tool-head"><div class="tool-ico c-sky">${I.info}</div><div><h1>Questions fréquentes</h1><p>Tout ce qu’il faut savoir sur Outipro et le traitement de vos fichiers.</p></div></div>
           <div class="faq">${items.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}</div>
+        </div>
+      </section>`;
+  }
+
+  function pageContact() {
+    const email = 'sonoreluc30@gmail.com';
+    return `
+      <section class="tool-page">
+        <div class="container">
+          <div class="breadcrumb"><a href="#/">Accueil</a> ${I.chevronRight} <span>Contact</span></div>
+          <div class="tool-head"><div class="tool-ico c-sky">${I.mail}</div><div><h1>Nous contacter</h1><p>Une question, un bug, une suggestion d’outil ? Écrivez-nous, nous lisons chaque message.</p></div></div>
+
+          <div class="contact-grid">
+            <div class="panel contact-card">
+              <div class="contact-ico">${I.mail}</div>
+              <h2>Par e-mail</h2>
+              <p class="muted">Le plus simple et le plus rapide. Précisez l’outil utilisé et, si possible, le format du fichier concerné.</p>
+              <a class="contact-mail" href="mailto:${email}">${email}</a>
+              <div class="contact-actions">
+                <a class="btn btn-primary" href="mailto:${email}?subject=Contact%20Outipro">${I.send} Écrire un message</a>
+                <button class="btn" type="button" id="copy-mail" data-mail="${email}">${I.copy} Copier l’adresse</button>
+              </div>
+            </div>
+
+            <div class="panel">
+              <h2>Pour un signalement efficace</h2>
+              <p class="muted" style="margin-top:0">Quelques informations nous permettent de reproduire le problème et de le corriger plus vite :</p>
+              <ul class="contact-list">
+                <li><strong>L’outil concerné</strong> — par exemple « Fusionner des PDF ».</li>
+                <li><strong>Le type de fichier</strong> — PDF scanné, PDF protégé, photo JPG, document .docx…</li>
+                <li><strong>Les options choisies</strong> — niveau de compression, plage de pages, format de sortie.</li>
+                <li><strong>Ce qui s’est passé</strong> — message d’erreur affiché, résultat inattendu, page blanche.</li>
+                <li><strong>Le navigateur et l’appareil</strong> — Chrome sur ordinateur, Safari sur iPhone, etc.</li>
+              </ul>
+              <div class="alert alert-info" style="margin-top:16px">${I.shield}<div><strong>N’envoyez pas vos documents par e-mail.</strong> Aucun fichier n’est nécessaire pour diagnostiquer un problème : une description suffit. Vos documents sensibles n’ont aucune raison de quitter votre appareil.</div></div>
+            </div>
+          </div>
+
+          <div class="prose" style="margin-top:26px">
+            <h2>Délai de réponse</h2>
+            <p>Outipro est un projet indépendant, animé en dehors d’une structure commerciale. Les messages reçoivent généralement une réponse sous quelques jours ouvrés. Les signalements de dysfonctionnement sont traités en priorité, devant les demandes de nouvelles fonctionnalités.</p>
+
+            <h2>Ce que nous ne pouvons pas faire</h2>
+            <p>Nous ne pouvons ni récupérer un fichier que vous auriez perdu, ni déverrouiller un PDF protégé par mot de passe, ni restaurer un document supprimé de votre appareil : aucun fichier ne transite par nos soins, il n’existe donc aucune copie de sauvegarde de notre côté. De la même manière, nous ne fournissons pas d’assistance juridique sur la valeur d’un document signé ou modifié via la plateforme.</p>
+
+            <h2>Questions fréquentes</h2>
+            <p>Avant d’écrire, jetez un œil à la <a href="#/faq">FAQ</a> : elle répond déjà aux interrogations les plus courantes sur la confidentialité, la taille des fichiers, les PDF protégés et la qualité de compression. Le détail du traitement des données figure dans la <a href="#/confidentialite">politique de confidentialité</a>, et les règles d’usage dans les <a href="#/conditions-utilisation">conditions d’utilisation</a>.</p>
+          </div>
         </div>
       </section>`;
   }
@@ -515,6 +565,19 @@
       app.innerHTML = pagePrivacy(); setActiveNav(''); document.title = 'Confidentialité — Outipro';
     } else if (parts[0] === 'conditions-utilisation') {
       app.innerHTML = pageTerms(); setActiveNav(''); document.title = 'Conditions d’utilisation — Outipro';
+    } else if (parts[0] === 'contact') {
+      app.innerHTML = pageContact(); setActiveNav('contact'); document.title = 'Contact — Outipro';
+      const copyBtn = document.getElementById('copy-mail');
+      if (copyBtn) copyBtn.addEventListener('click', async () => {
+        const mail = copyBtn.getAttribute('data-mail');
+        try {
+          await navigator.clipboard.writeText(mail);
+          copyBtn.innerHTML = `${I.check} Adresse copiée`;
+          setTimeout(() => { copyBtn.innerHTML = `${I.copy} Copier l’adresse`; }, 2200);
+        } catch (e) {
+          O.toast(mail);
+        }
+      });
     } else {
       app.innerHTML = page404(); setActiveNav('');
       document.title = 'Page introuvable — Outipro';
