@@ -613,3 +613,26 @@ html[data-theme="dark"] .seo-list a { color: var(--brand-200); }
   .seo-section { padding: 40px 0 48px; }
   .seo-section h2 { font-size: 1.16rem; }
 }
+
+/* Signature de l'auteur */
+.footer-credit {
+  display: flex; flex-direction: column; align-items: center; gap: 7px;
+  margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border);
+  text-align: center;
+}
+.footer-credit-by { font-size: .84rem; color: var(--muted); letter-spacing: .01em; }
+.footer-credit-by strong { color: var(--ink); font-weight: 650; letter-spacing: .03em; }
+.footer-credit-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: .82rem; font-weight: 550; color: var(--brand-700);
+  text-decoration: none; padding: 5px 11px; border-radius: 8px;
+  border: 1px solid transparent; transition: .16s;
+}
+.footer-credit-link svg { width: 14px; height: 14px; }
+.footer-credit-link:hover {
+  color: var(--brand-800); background: var(--brand-50);
+  border-color: var(--brand-200); text-decoration: none;
+}
+.footer-credit-link:focus-visible { outline: 2px solid var(--brand-600); outline-offset: 2px; }
+html[data-theme="dark"] .footer-credit-link { color: #93c5fd; }
+html[data-theme="dark"] .footer-credit-link:hover { color: #bfdbfe; background: rgba(37, 99, 235, .18); border-color: #1f3d6b; }

@@ -46,6 +46,7 @@ window.ICONS = (function () {
     mail: p('<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2.5 6.5 9.5 7 9.5-7"/>'),
     copy: p('<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>'),
     refresh: p('<path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/>'),
-    send: p('<path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/>')
+    send: p('<path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/>'),
+    facebook: p('<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>')
   };
 })();

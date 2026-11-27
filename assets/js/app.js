@@ -82,6 +82,12 @@
           <span>© ${new Date().getFullYear()} Outipro — Outils gratuits, traitement local.</span>
           <span>Fait avec soin ${I.heart}</span>
         </div>
+        <div class="footer-credit">
+          <span class="footer-credit-by">Fait par <strong>LUCKSON NGOY</strong></span>
+          <a class="footer-credit-link" href="https://www.facebook.com/Luckson.ngoy" target="_blank" rel="noopener noreferrer" aria-label="Profil Facebook de LUCKSON NGOY">
+            ${I.facebook || ''}<span>facebook.com/Luckson.ngoy</span>
+          </a>
+        </div>
       </div>`;
   }
 
